@@ -1,67 +1,43 @@
-## Description
-**Title:** Tap Secrets  
-**Author:** Suraj  
-**Points:** 300 
+## Broken QRRR
+**Title:** Broken QRRR  
+**Author:** [Author Name]  
+**Points:** [Points Value]  
 
-You’ve been provided with filtered call logs from the CEO, which contain suspicious long numbers suggesting covert communications. These entries may unveil a hidden conspiracy within WindShine Pvt. Ltd.
+**Description:**  
+Participants are provided with an RMQR code divided into four pieces. Upon joining the RMQR, they receive a fake flag, but hidden within the images are comments containing Morse code that reveals the real flag.
 
 ---
 
 ## Writeup
-1. **Analyze the Logs**:  
-   The logs included fields such as Date, Time, Call Type, Status, Duration, and the critical "Number Dialed" field. This field contained sequences like `7 666 0 33 777 8 8 8 3 8 0`, resembling old mobile multi-tap SMS encoding.
+**Step 1: Analyze the RMQR Pieces**:  
+   The challenge presents four pieces of an RMQR code. Initially, when participants join the RMQR, they receive a fake flag, creating a deceptive sense of accomplishment.
 
-2. **Identify Encoding Pattern**:  
-   Each digit (2–9) could correspond to letters, much like a phone keypad. For instance, `2` represents "ABC," `3` for "DEF," and so on. Spaces (`0`) in the sequence indicated gaps between words.
+**Step 2: Use ExifTool to Inspect Metadata**:  
+   Each RMQR piece may contain hidden comments or metadata. To extract this information, participants can use **ExifTool**, a powerful command-line utility for reading, writing, and editing metadata in various file formats, including images. This tool is essential for uncovering any concealed messages.
 
-3. **Develop a Decoding Script**:  
-   Use the following Python script to decode the sequences:
+   To inspect an image, the command is as follows:
 
-   ```python
-    import csv
+   ```bash
+   exiftool H5k7W2.jpg
 
-    char_mapping = {
-        '2': 'A',
-        '22': 'B',
-        '222': 'C',
-        '3': 'D',
-        '33': 'E',
-        '333': 'F',
-        '4': 'G',
-        '44': 'H',
-        '444': 'I',
-        '5': 'J',
-        '55': 'K',
-        '555': 'L',
-        '6': 'M',
-        '66': 'N',
-        '666': 'O',
-        '7': 'P',
-        '77': 'Q',
-        '777': 'R',
-        '7777': 'S',
-        '8': 'T',
-        '88': 'U',
-        '888': 'V',
-        '9': 'W',
-        '99': 'X',
-        '999': 'Y',
-        '9999': 'Z',
-        '0': ' '
-    }
+```
 
-    def decode_message(encoded_message):
-        encoded_numbers = encoded_message.split()
-        
-        decoded_message = ''.join(char_mapping.get(num, '') for num in encoded_numbers)
-        
-        return decoded_message
+    !(img/image.png)
 
-    csv_file_path = 'suspicious_call_log.csv'
+**Step 4: Step 3: Decode Morse Code:**
+    Upon analyzing the images, you'll find a User Comment in the metadata consisting of dashes and dots, resembling Morse code. For example, the comment may appear as .. . -- -... .-.. -.--.
 
-    with open(csv_file_path, mode='r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            encoded_numbers = row['Number Dialed']
-            decoded_message = decode_message(encoded_numbers)
-            print(decoded_message)
+    To retrieve the actual flag, you need to join these Morse code segments in the order that reflects the arrangement of the original QR code pieces.
+
+    The order is :X7f4J9.jpg,L2b8Q3.jpg,P9v1Z6.jpg,H5k7W2.jpg
+
+    You can use an online Morse code decoder to get the flag.
+    [Morse Code Translator](https://morsecode.world/international/translator.html)
+
+    ! (img/output.png)
+
+
+**Flag:** cyberarc{d4sh_d0t_4ssembly}
+
+
+
