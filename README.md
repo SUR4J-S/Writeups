@@ -4,16 +4,20 @@
 **Points:** 200  
 
 **Description:**  
+
 We've been provided with an RMQR code divided into four pieces. Upon scanning the RMQR using the **SCANDIT** app available on the Play Store, we will receive a fake flag. However, hidden within the images are comments containing Morse code that reveals the real flag.
 
 
 ---
 
 ## Writeup
+
 **Step 1: Analyze the RMQR Pieces**:  
+
    The challenge presents four pieces of an RMQR code. Initially, when we scan the RMQR, we receive a fake flag.
 
 **Step 2: Use ExifTool to Inspect Metadata**:  
+
    Each RMQR piece contains hidden comments or metadata. To extract this information, we can use **ExifTool**, a powerful command-line utility for reading, writing, and editing metadata in various file formats, including       images. This tool is essential for uncovering any concealed messages.
    
    To inspect an image, the command is as follows:
