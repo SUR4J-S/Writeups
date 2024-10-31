@@ -4,16 +4,17 @@
 **Points:** 200  
 
 **Description:**  
-Participants are provided with an RMQR code divided into four pieces. Upon joining the RMQR, they receive a fake flag, but hidden within the images are comments containing Morse code that reveals the real flag.
+We've been provided with an RMQR code divided into four pieces. Upon scanning the RMQR using the **SCANDIT** app available on the Play Store, we will receive a fake flag. However, hidden within the images are comments containing Morse code that reveals the real flag.
+
 
 ---
 
 ## Writeup
 **Step 1: Analyze the RMQR Pieces**:  
-   The challenge presents four pieces of an RMQR code. Initially, when participants join the RMQR, they receive a fake flag, creating a deceptive sense of accomplishment.
+   The challenge presents four pieces of an RMQR code. Initially, when we scan the RMQR, we receive a fake flag.
 
 **Step 2: Use ExifTool to Inspect Metadata**:  
-   Each RMQR piece may contain hidden comments or metadata. To extract this information, participants can use **ExifTool**, a powerful command-line utility for reading, writing, and editing metadata in various file formats,    including images. This tool is essential for uncovering any concealed messages.
+   Each RMQR piece contains hidden comments or metadata. To extract this information, we can use **ExifTool**, a powerful command-line utility for reading, writing, and editing metadata in various file formats, including       images. This tool is essential for uncovering any concealed messages.
    
    To inspect an image, the command is as follows:
 
@@ -25,9 +26,9 @@ Participants are provided with an RMQR code divided into four pieces. Upon joini
 
 **Step 3: Decode Morse Code:**
 
-   Upon analyzing the images, you'll find a User Comment in the metadata consisting of dashes and dots, resembling Morse code. For example, the comment may appear as `.. . -- -... .-.. -.--`.
+   Upon analyzing the images, we'll find a User Comment in the metadata consisting of dashes and dots, resembling Morse code. For example, the comment may appear as `.. . -- -... .-.. -.--`.
 
-   To retrieve the actual flag, you need to join these Morse code segments in the order that reflects the arrangement of the original QR code pieces.
+   To retrieve the actual flag, we need to join these Morse code segments in the order that reflects the arrangement of the original QR code pieces.
 
    The order is: X7f4J9.jpg, L2b8Q3.jpg, P9v1Z6.jpg, H5k7W2.jpg.
 
