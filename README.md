@@ -1,47 +1,97 @@
-## Big Dawgs
-**Title:** Big Dawgs  
-**Author:** [Author Name]  
-**Points:** [Points Value]  
+## Lost in Time
+**Title:** Lost in Time  
+**Author:** Suraj 
+**Points:** 300  
 
-**Description:**  
+**Description:**
 
-WindShine Pvt Ltd.'s CEO has been suspiciously blasting the trending song "Big Dawgs" on repeat during meetings. Rumor has it, the song isn't just for hype. Can you uncover the real reason behind this musical obsession?
+During an investigation into potential misconduct at WindShine Pvt Ltd, an employee stumbles upon a mysterious disk image rumored to hold important secrets. However, the password to unlock it remains unknown. Can you help uncover the hidden secrets?
 
 ---
 
 ## Writeup
 
-**Step 1: Listen to the Song Carefully and Analyze in Audacity**  
+**Step 1: Mount the Disk Image**
 
-   Start by listening to the song "Big Dawgs." Pay special attention to the area around **3:14**. If you listen carefully, you will hear some distinct beep sounds that may hint at hidden information.  
-   Using Audacity will allow you to visually analyze the audio file and potentially reveal hidden messages that may not be easily discernible by ear.
+   We've been provided with a `.img` file, which is a disk image—a complete copy of a storage device or a portion of it. Disk images are often used for backup or distribution purposes, as they contain the exact contents and structure of the original disk, allowing     users to access and manipulate the files contained within.
 
-**Step 2: Download and Install Audacity**  
+   To access the contents of the provided `.img` file, we need to mount it. Mounting is the process of making the filesystem on the disk image accessible to the operating system. Follow these steps:
 
-   If you don’t have Audacity installed, download it from the official site: [Audacity Download](https://www.audacityteam.org/download/).  
-   Audacity is a free, open-source, cross-platform audio software that allows users to record, edit, and analyze audio files. With its powerful features, you can visualize sound waves and conduct detailed analysis, making it a valuable tool for uncovering hidden information in audio tracks. Follow the installation instructions for your operating system.
+1. **Open Terminal** on your system.
+2. Create a mount point (a directory where the image will be accessible):
+```bash
+   sudo mkdir /mnt/disk_image
+```
+3. Mount the disk image using the following command (replace image.img with the actual name of your image file):
+```bash
+    sudo mount -o loop image.img /mnt/disk_image
+```
 
-**Step 3: Import the Audio File into Audacity**  
+4. Now, we can navigate to the mounted directory:
+```bash
+    cd /mnt/disk_image
+```
 
-1. Open Audacity.
-2. Click on **File** in the top menu.
-3. Select **Open...** from the dropdown.
-4. Browse to the location where you saved the "Big Dawgs" audio file and select it.
-5. Click **Open** to load the audio file into Audacity.
+After mounting the image, we will see a Linux-like environment resembling a directory structure similar to a typical Linux filesystem. You'll notice directories like **/home**, **/root**, and **/usr**. The **/home** directory is commonly where user files are stored, providing a personal space for each user to manage their documents, downloads, and configurations.
 
-**Step 4: Change to Spectrogram View**  
+**Step 2: View All Files**
+As you search through the directories, you may need to list all files, including those that may not be immediately visible. To view all files in the current directory, including those that may be hidden, use the following command:
 
-1. In the track view (where the waveform is displayed), click the downward-facing arrow next to the track name (usually labeled as "Audio Track").
-2. From the dropdown menu, select **Spectrogram**.
-3. You can adjust the settings for the spectrogram view by selecting **Spectrogram Settings...** from the same dropdown. This allows you to change parameters like the window size or range.
+```bash
+    ls -a
+```
 
-![Spectogram](img/aud1.png)
+**Step 3: Explore the Directory Structure**
+Navigate through the directories to gather information. Start by examining the /home/windshine directory:
 
-**Step 5: Analyze the Spectrogram**  
+```bash
+    cd home/windshine
+```
+As you explore the Documents directory, you will find a suspicious file named .secret.txt.enc
 
-   - After changing to spectrogram view, navigate to the area around **3:14** in the song. 
-   - Listen carefully as you observe the spectrogram; you might notice that the flag is visually represented within the wave patterns.
+![secret_file](img/term1.png)
 
-   ![Flag](img/audfin.png)
+**Step 4: Identify the Encrypted File**
 
-**Flag:** cyberarc{h1DdeN_1n_Th3_W4v3s}
+Upon locating the .secret.txt.enc file, you will discover that it is encrypted, indicated by the .enc extension. This suggests that the file requires a password to access its contents.
+
+**Step 5: Check the Bash History**
+
+The bash_history file records the commands previously executed by the user. We can check this file to find any commands that might help us in our investigation, especially those related to file encryption. Use the following command:
+
+```bash
+    cat .bash_history
+```
+in the home directory of the image (not your bash_history file)
+
+Look for commands that suggest any recent file operations or encryption activities. This may lead you to discover useful information, including the password used for encrypting the secret file.
+
+![history](img/term2.png)
+
+You might see a command in the bash_history file like: `openssl enc -aes-256-cbc -salt -in secret.txt -out secret.txt.enc -k "grepHistoryForFun" `
+
+This command indicates that the file was encrypted using the AES-256-CBC algorithm, a widely used symmetric encryption standard. The -salt option helps to protect against dictionary attacks, while -k specifies the password used for encryption
+
+**Step 6: Decrypting the Encrypted File**
+
+Once you've identified the password from the bash_history, you can use it to decrypt the file. Use the following command, replacing YOURPASSWORD with the actual password obtained:
+
+```bash
+openssl enc -aes-256-cbc -d -in .secret.txt.enc -out secret.txt -pass pass:YOURPASSWORD
+```
+
+![decrypt](img/decrypt.png)
+
+**Step 7: Access the Decrypted File**
+
+After running the decryption command, you will find the decrypted file in the same directory. You can view its contents using:
+
+```bash
+cat secret.txt
+```
+
+which gives us the flag
+
+![flag](img/flag.png)
+
+**Flag:** cyberarc{C0mm4nd_H1st0ry_3xp0s3s_M4l1c10us_Act1v1ty}
