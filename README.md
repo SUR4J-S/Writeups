@@ -10,12 +10,15 @@ You’ve been provided with filtered call logs from the CEO, which contain suspi
 
 ## Writeup
 **Step 1: Analyze the Logs**:  
+
    The logs included fields such as Date, Time, Call Type, Status, Duration, and the critical "Number Dialed" field. This field contained sequences like `222 666 777 555 222 555 4 0 666 33 7777 4 4 222 4 2 4 8 4 777`, resembling old mobile multi-tap SMS encoding.
 
 **Step 2: Identify Encoding Pattern**:  
+
    Each digit (2–9) could correspond to letters, much like a phone keypad. For instance, `2` represents "ABC," `3` for "DEF," and so on. Spaces (`0`) in the sequence indicated gaps between words.
 
 **Step 3: Develop a Decoding Script**:  
+
    Use the following Python script to decode the sequences:
 
    ```python
@@ -51,9 +54,10 @@ You’ve been provided with filtered call logs from the CEO, which contain suspi
 ```
 
 **Step 4: Analyse the outut file**: 
-    After running the script, check the decoded_messages.txt file for decoded messages. Look through the messages to find the flag hidden among them.
+    
+   After running the script, check the decoded_messages.txt file for decoded messages. Look through the messages to find the flag hidden among them.
 
-    !(img/output.png)
+   !(img/output.png)
 
 
 **Flag:** cyberarc{encrypted_call_logs}
