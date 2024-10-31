@@ -1,7 +1,7 @@
 ## Broken QRRR
 **Title:** Broken QRRR  
-**Author:** [Author Name]  
-**Points:** [Points Value]  
+**Author:** Suraj 
+**Points:** 200  
 
 **Description:**  
 Participants are provided with an RMQR code divided into four pieces. Upon joining the RMQR, they receive a fake flag, but hidden within the images are comments containing Morse code that reveals the real flag.
@@ -19,9 +19,9 @@ Participants are provided with an RMQR code divided into four pieces. Upon joini
 
    ```bash
    exiftool H5k7W2.jpg
-```
+   ```
 
-    !(img/image.png)
+   ![Exiftool](img/image.png)
 
 **Step 3: Decode Morse Code:**
 
