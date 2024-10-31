@@ -13,7 +13,8 @@ We've been provided with an RMQR code divided into four pieces. Upon scanning th
 ## Writeup
 
 **Step 1: Analyze the RMQR Pieces**:  
-    The challenge presents four pieces of an RMQR code. Initially, when we scan the RMQR, we receive a fake flag.
+    
+   The challenge presents four pieces of an RMQR code. Initially, when we scan the RMQR, we receive a fake flag.
 
 **Step 2: Use ExifTool to Inspect Metadata**:  
 
