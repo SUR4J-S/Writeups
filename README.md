@@ -35,6 +35,7 @@ During an investigation into potential misconduct at WindShine Pvt Ltd, an emplo
 After mounting the image, we will see a Linux-like environment resembling a directory structure similar to a typical Linux filesystem. You'll notice directories like **/home**, **/root**, and **/usr**. The **/home** directory is commonly where user files are stored, providing a personal space for each user to manage their documents, downloads, and configurations.
 
 **Step 2: View All Files**
+
 As you search through the directories, you may need to list all files, including those that may not be immediately visible. To view all files in the current directory, including those that may be hidden, use the following command:
 
 ```bash
@@ -42,6 +43,7 @@ As you search through the directories, you may need to list all files, including
 ```
 
 **Step 3: Explore the Directory Structure**
+
 Navigate through the directories to gather information. Start by examining the /home/windshine directory:
 
 ```bash
