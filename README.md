@@ -10,8 +10,9 @@ WindShine Pvt Ltd.'s CEO has been suspiciously blasting the trending song "Big D
 
 ## Writeup
 
-**Step 1: Listen to the Song Carefully**  
-   Start by listening to the song "Big Dawgs." Pay special attention to the area around **3:14**. If you listen carefully, you will hear some distinct beep sounds that may hint at hidden information.
+**Step 1: Listen to the Song Carefully and Analyze in Audacity**  
+   Start by listening to the song "Big Dawgs." Pay special attention to the area around **3:14**. If you listen carefully, you will hear some distinct beep sounds that may hint at hidden information.  
+   Using Audacity will allow you to visually analyze the audio file and potentially reveal hidden messages that may not be easily discernible by ear.
 
 **Step 2: Download and Install Audacity**  
    If you don’t have Audacity installed, download it from the official site: [Audacity Download](https://www.audacityteam.org/download/).  
