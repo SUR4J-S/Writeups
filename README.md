@@ -72,7 +72,7 @@ Look for commands that suggest any recent file operations or encryption activiti
 
 You might see a command in the bash_history file like: `openssl enc -aes-256-cbc -salt -in secret.txt -out secret.txt.enc -k "grepHistoryForFun" `
 
-This command indicates that the file was encrypted using the AES-256-CBC algorithm, a widely used symmetric encryption standard. The -salt option helps to protect against dictionary attacks, while -k specifies the password used for encryption
+This command indicates that the file was encrypted using the AES-256-CBC algorithm, a widely used symmetric encryption standard. The -salt option helps to protect against dictionary attacks, while -k specifies the password used for encryption. So the password used here is `grepHistoryForFun`
 
 **Step 6: Decrypting the Encrypted File**
 
