@@ -20,16 +20,16 @@ During an investigation into potential misconduct at WindShine Pvt Ltd, an emplo
 1. **Open Terminal** on your system.
 2. Create a mount point (a directory where the image will be accessible):
 ```bash
-   sudo mkdir /mnt/disk_image
+sudo mkdir /mnt/disk_image
 ```
 3. Mount the disk image using the following command (replace image.img with the actual name of your image file):
 ```bash
-    sudo mount -o loop image.img /mnt/disk_image
+sudo mount -o loop image.img /mnt/disk_image
 ```
 
 4. Now, we can navigate to the mounted directory:
 ```bash
-    cd /mnt/disk_image
+cd /mnt/disk_image
 ```
 
 After mounting the image, we will see a Linux-like environment resembling a directory structure similar to a typical Linux filesystem. You'll notice directories like **/home**, **/root**, and **/usr**. The **/home** directory is commonly where user files are stored, providing a personal space for each user to manage their documents, downloads, and configurations.
@@ -39,7 +39,7 @@ After mounting the image, we will see a Linux-like environment resembling a dire
 As you search through the directories, you may need to list all files, including those that may not be immediately visible. To view all files in the current directory, including those that may be hidden, use the following command:
 
 ```bash
-    ls -a
+ls -a
 ```
 
 **Step 3: Explore the Directory Structure**
@@ -47,7 +47,7 @@ As you search through the directories, you may need to list all files, including
 Navigate through the directories to gather information. Start by examining the /home/windshine directory:
 
 ```bash
-    cd home/windshine
+cd home/windshine
 ```
 As you explore the Documents directory, you will find a suspicious file named .secret.txt.enc
 
@@ -62,7 +62,7 @@ Upon locating the .secret.txt.enc file, you will discover that it is encrypted, 
 The bash_history file records the commands previously executed by the user. We can check this file to find any commands that might help us in our investigation, especially those related to file encryption. Use the following command:
 
 ```bash
-    cat .bash_history
+cat .bash_history
 ```
 in the home directory of the image (not your bash_history file)
 
