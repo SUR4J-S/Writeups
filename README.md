@@ -1,48 +1,29 @@
-## Broken QRRR
-**Title:** Broken QRRR  
-**Author:** Suraj 
-**Points:** 200  
+## The Cena Cover-Up
+**Title:** The Cena Cover-Up  
+**Author:** Suraj
+**Points:** 100
 
 **Description:**  
 
-We've been provided with an RMQR code divided into four pieces. Upon scanning the RMQR using the **SCANDIT** app available on the Play Store, we will receive a fake flag. However, hidden within the images are comments containing Morse code that reveals the real flag.
-
+The CEO of WindShine Pvt Ltd is a huge fan of John Cena and has posters of him throughout his office. Investigators found a suspicious PDF where he mentions plans to print more Cena posters, raising red flags. Can you help uncover more about his intentions?
 
 ---
 
 ## Writeup
 
-**Step 1: Analyze the RMQR Pieces**:  
+**Step 1: Analyze the PDF Document**:
     
-   The challenge presents four pieces of an RMQR code. Initially, when we scan the RMQR, we receive a fake flag.
+We are provided with a PDF file that appears to contain plans related to the printing of John Cena posters. Upon initial inspection, the document looks ordinary, with no visible flags or hints.
 
-**Step 2: Use ExifTool to Inspect Metadata**:  
+**Step 2: Reveal Hidden Text**:  
 
-   Each RMQR piece contains hidden comments or metadata. To extract this information, we can use **ExifTool**, a powerful command-line utility for reading, writing, and editing metadata in various file formats, including       images. This tool is essential for        uncovering any concealed messages.
-   
-   To inspect an image, the command is as follows:
+The flag is cleverly hidden in the PDF, formatted in white text that matches the background color. To uncover the hidden flag, we can simply select all the text in the PDF.
 
-   ```bash
-   exiftool H5k7W2.jpg
-   ```
+**Step 3: Use Ctrl+A**:  
 
-   ![Exiftool](img/image.png)
+By pressing **Ctrl+A** (or Command+A on macOS), we can select all the content in the document. This action will highlight the white text along with the visible content, allowing us to see the hidden flag.
 
-**Step 3: Decode Morse Code:**
-
-   Upon analyzing the images, we'll find a User Comment in the metadata consisting of dashes and dots, resembling Morse code. For example, the comment may appear as `.. . -- -... .-.. -.--`.
-
-   To retrieve the actual flag, we need to join these Morse code segments in the order that reflects the arrangement of the original QR code pieces.
-
-   The order is: X7f4J9.jpg, L2b8Q3.jpg, P9v1Z6.jpg, H5k7W2.jpg.
-
-   You can use an online Morse code decoder to get the flag.
-
-   [Morse Code Translator](https://morsecode.world/international/translator.html)
-
-   ![Output Image](img/output.png)
-
-**Flag:** cyberarc{d4sh_d0t_4ssembly}
+![Output](img/output.png)
 
 
-
+**Flag:** cyberarc{w3ll_7h4t_w4s_a_b4d_1d34}
