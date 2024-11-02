@@ -17,7 +17,7 @@ The logs included fields such as Date, Time, Call Type, Status, Duration, and th
 
 Each digit (2–9) correspond to letters, much like a phone keypad. For instance, `2` represents "ABC," `3` for "DEF," and so on. Spaces (`0`) in the sequence indicated gaps between words.
 
-![Keypad](keypad.jpg)
+![Keypad](keypad.png)
 
 Use the following Python script to decode the sequences:
 
