@@ -19,6 +19,6 @@ To decode the message, we can look for online Pigpen cipher decoders, which can 
 I've used this website
 [Pigpen Cipher Decoder](https://www.dcode.fr/pigpen-cipher)
 
-[Flag](flag.png)
+![Flag](flag.png)
 
 ### **Flag: `cyberarc{revealing_encrypted_truths}`**

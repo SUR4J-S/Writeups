@@ -21,7 +21,7 @@ Each digit (2–9) correspond to letters, much like a phone keypad. For instance
 
 Use the following Python script to decode the sequences:
 
-![decrypt.py](decrypt.py)
+[decrypt.py](decrypt.py)
 
 ```python
 import csv
